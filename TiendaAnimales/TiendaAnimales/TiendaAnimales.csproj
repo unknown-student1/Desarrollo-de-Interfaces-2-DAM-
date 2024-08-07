@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CEB3B122-77CA-492B-BAE6-A67C15D8DA8D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TiendaAnimales</RootNamespace>
+    <AssemblyName>TiendaAnimales</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=7.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.7.0.1\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlConnector.2.3.7\lib\net471\MySqlConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Conexion.cs" />
+    <Compile Include="FormArticuloAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArticuloAdd.Designer.cs">
+      <DependentUpon>FormArticuloAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormArticuloEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArticuloEdit.Designer.cs">
+      <DependentUpon>FormArticuloEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClienteAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClienteAdd.Designer.cs">
+      <DependentUpon>FormClienteAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClienteEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClienteEdit.Designer.cs">
+      <DependentUpon>FormClienteEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClientes.Designer.cs">
+      <DependentUpon>FormClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArticulos.Designer.cs">
+      <DependentUpon>FormArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDetalleAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDetalleAdd.Designer.cs">
+      <DependentUpon>FormDetalleAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDetalleEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDetalleEdit.Designer.cs">
+      <DependentUpon>FormDetalleEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDetalles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDetalles.Designer.cs">
+      <DependentUpon>FormDetalles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTransaccionAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTransaccionAdd.Designer.cs">
+      <DependentUpon>FormTransaccionAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTransaccionEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTransaccionEdit.Designer.cs">
+      <DependentUpon>FormTransaccionEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTransacciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTransacciones.Designer.cs">
+      <DependentUpon>FormTransacciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVentaAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVentaAdd.Designer.cs">
+      <DependentUpon>FormVentaAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVentaEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVentaEdit.Designer.cs">
+      <DependentUpon>FormVentaEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVentas.Designer.cs">
+      <DependentUpon>FormVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormArticuloAdd.resx">
+      <DependentUpon>FormArticuloAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormArticuloEdit.resx">
+      <DependentUpon>FormArticuloEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClienteAdd.resx">
+      <DependentUpon>FormClienteAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClienteEdit.resx">
+      <DependentUpon>FormClienteEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClientes.resx">
+      <DependentUpon>FormClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormArticulos.resx">
+      <DependentUpon>FormArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDetalleAdd.resx">
+      <DependentUpon>FormDetalleAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDetalleEdit.resx">
+      <DependentUpon>FormDetalleEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDetalles.resx">
+      <DependentUpon>FormDetalles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransaccionAdd.resx">
+      <DependentUpon>FormTransaccionAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransaccionEdit.resx">
+      <DependentUpon>FormTransaccionEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransacciones.resx">
+      <DependentUpon>FormTransacciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVentaAdd.resx">
+      <DependentUpon>FormVentaAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVentaEdit.resx">
+      <DependentUpon>FormVentaEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVentas.resx">
+      <DependentUpon>FormVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pets_logo_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar-perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientes_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_product.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_inventory.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajustes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevo.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>DataTable</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Table Exercise:</h1>
+        <br>
+        <div class="row">
+            <div class="col">
+                <input type="number" id="codigo" class="form-control" placeholder="Código Producto">
+            </div>
+            <div class="col">
+                <input type="text" id="descripcion" class="form-control" placeholder="Ingrese la descripcion: ">
+            </div>
+            <div class="col">
+                <input type="number" id="cantidad" class="form-control" placeholder="Ingrese la cantidad: ">
+            </div>
+            <div class="col">
+                <input type="number" id="precio" class="form-control" placeholder="Ingrese la precio: ">
+            </div>
+            <div class="col">
+                <button class="btn btn-success" onclick="addFila()">Añadir</button>
+                <button class="btn btn-success" onclick="">Modificar</button>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <table class="table" id="tabla">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo">
+
+                </tbody>
+            </table>
+            <h3>
+                Total:
+                <span id="total"></span>
+            </h3>
+           
+        </div>
+    </div>
+    <script>
+        // Funcion para añadir fila a la tabla
+        function addFila() {
+            //Obtenemos los valores introducidos por el usuario
+            var codigo = document.getElementById("codigo").value;
+            var descripcion = document.getElementById("descripcion").value;
+            var cantidad = document.getElementById("cantidad").value;
+            var precio = document.getElementById("precio").value;
+            var cuerpo = document.getElementById("cuerpo");
+
+            //Calcular Subtotal
+            var subtotal = cantidad*precio;
+
+            //Creamos una nueva fila en HTML
+            var fila =
+            `<tr>
+            <td>${codigo}</td>
+            <td>${descripcion}</td>
+            <td>${cantidad}</td>
+            <td>${precio}</td>
+            <td name="subtotal">${subtotal}</td>
+            <td>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-success" onclick="modificarFila(this)">Modificar</button>
+                        <button class="btn btn-danger" onclick="deleteFila(this)">Borrar</button>
+                    </div>
+                </div>
+            </td>
+            </tr>`;
+
+            //Insertamos la fila en el codigo HTML
+            cuerpo.innerHTML = cuerpo.innerHTML + fila;
+
+            //Guardamos los campos en un matriz
+            let camposArray = [
+                document.getElementById("codigo"),
+                document.getElementById("descripcion"),
+                document.getElementById("cantidad"),
+                document.getElementById("precio"),
+            ];
+            //Invocamos la función para limpiar los campos
+            LimpiarCampos(camposArray);
+            CalculaTotal();
+        }
+
+        function CalculaTotal(){
+            var celdas = document.getElementsByName("subtotal");
+            var total = 0;
+
+            for (index = 0; index < celdas.length; index++) {
+                var total = total + parseInt(celdas[index].innerText);
+
+            }
+
+            document.getElementById("total").innerHTML = total;
+        }
+
+        function LimpiarCampos(matrizcampos) {
+            for (let index = 0; index < matrizcampos.length; index++) {
+                matrizcampos[index].innerText = "";
+            }
+        }
+
+        // Funcion para borrar fila de la tabla
+        function deleteFila(boton) {
+            // Obtenemos la el indice de la fila
+            var indice = boton.parentNode.parentNode.parentNode.parentNode.rowIndex;
+            // Obtenemos la tabla
+            document.getElementById("tabla").deleteRow(indice);
+            // Volvemos a calcular el total
+            CalculaTotal();
+        }
+        
+        // Funcion para modificar fila de la tabla
+        function modificarFila(boton) {
+            // Obtenemos la fila
+            var fila = boton.parentNode.parentNode.parentNode.parentNode;
+            // Obtenemos el indice de la fila
+            var indice = boton.parentNode.parentNode.parentNode.parentNode.rowIndex;
+
+            // Obtenemos las columnas de la fila
+            var columnas = fila.getElementsByTagName('td')
+
+            // Pasamos los valores a los campos
+            document.getElementById("codigo").value = columnas[0].innerHTML;
+            document.getElementById("descripcion").value = columnas[1].innerHTML;
+            document.getElementById("cantidad").value = columnas[2].innerHTML;
+            document.getElementById("precio").value = columnas[3].innerHTML;       
+        }
+
+    </script>
+</body>
+</html>

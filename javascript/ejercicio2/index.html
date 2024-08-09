@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Contar Letras:</h1>
+        <br>
+        <div class="row">
+            <div class="col">
+                <input type="text" id="frase" class="form-control" placeholder="Ingrese la letra: ">
+            </div>
+            <div class="col">
+                <button class="btn btn-success" onclick="contarLetrasNumeros()">Contar</button>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="col">
+                <h3>Resultado:</h3>
+                <h2>
+                    <span id="resultadoLetras"></span>
+                    <br>
+                    <span id="resultadoNumeros"></span>
+                    <br>
+                    <span id="resultadoSuma"></span>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <script>
+    function contarLetrasNumeros() {
+        //Obtenemos los valores introducidos del usuario
+        var frase = document.getElementById("frase").value;
+
+        // Eliminar los espacios de la frase
+        frase = frase.replace(/\s/g, "");
+
+
+        // Inicializar variables para contar letras y números
+        var contadorLetras = 0;
+        var contadorNumeros = 0;
+        var sumaNumeros = 0;
+        
+        // Recorrer cada carácter de la frase
+        for (var i = 0; i < frase.length; i++) {
+            var caracter = frase.charAt(i);
+
+            // Verificar si el carácter es una letra
+            if (/[a-zA-Z]/.test(caracter)) {
+                contadorLetras++;
+            }
+            // Verificar si el carácter es un número
+            else if (!isNaN(caracter)) {
+            contadorNumeros++;
+            sumaNumeros += parseInt(caracter);
+            }
+        }
+
+        document.getElementById("resultadoLetras").innerHTML =
+          "La frase contiene " + contadorLetras + " letras.";
+        document.getElementById("resultadoNumeros").innerHTML =
+          "La frase contiene " + contadorNumeros + " números.";
+        document.getElementById("resultadoSuma").innerHTML =
+          "La suma de los números es: " + sumaNumeros;
+    }
+    </script>
+</body>
+</html>

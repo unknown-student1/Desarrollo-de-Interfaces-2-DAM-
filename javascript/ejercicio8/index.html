@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Ejercicio 8</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Word Management</h2>
+        <hr><br>
+        <div class="row">
+            <div class="col">
+                <label for="">Palabra: </label>
+                <input type="text" id="palabra" class="form-control" placeholder="Ingrese la palabra:">
+            </div>
+            <div class="col">
+                <br>
+                <button class="btn btn-success" id="añadir" onclick="AddPalabra()">Añadir</button>
+            </div>
+            <div class="col-8">
+                <label for="ListaPalabras">Lista Palabras:</label>
+                <select class="form-control" id="palabraSelect" onchange="mostrarImagen()">
+                    <!--Añadir Opciones-->
+                    <option value="" >Selecione una palabra</option>
+                </select>
+            </div>
+
+            <div class="container">
+                <br>
+                <h3>Lista Palabras:</h3>
+            </div>
+            <ul id="palabralist">
+                <!--Elementros de la lista-->
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    function AddPalabra() {
+        // Obtenemos la palabra
+        var palabra = document.getElementById("palabra").value;
+
+        // Obtenemos la lista
+        var lista = document.getElementById("palabralist");
+
+        // Creamos un elemento HTML
+        var elementolista = `<li>${palabra}</li>`;
+
+        // Inesertamos el elemento en la lista
+        lista.innerHTML = lista.innerHTML + elementolista;
+
+        AgregarSelect();
+    }
+
+    function AgregarSelect() {
+        // Obtener los elementos de la lista HTML
+        const elementosLista = document.querySelectorAll('ul li');
+
+        // Obtener el select
+        const select = document.getElementById('palabraSelect');
+
+        // Recorrer los elementos de la lista
+        elementosLista.forEach((elemento) => {
+            // Comprobar si el elemento ya está en el select
+            const opcionExistente = Array.from(select.options).find((opcion) => opcion.value === elemento.textContent);
+
+            // Si no se encuentra, añadirlo al select
+            if (!opcionExistente) {
+                const nuevaOpcion = document.createElement('option');
+                nuevaOpcion.value = elemento.textContent;
+                nuevaOpcion.textContent = elemento.textContent;
+                select.appendChild(nuevaOpcion);
+            }
+        });
+    }
+
+
+</script>
+
+</html>

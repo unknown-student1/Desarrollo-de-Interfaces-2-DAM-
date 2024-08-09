@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Calculadora</h1>
+        <br>
+        <div class="row">
+            <div class="col">
+                <input type="number" id="numero1" class="form-control" placeholder="Ingrese el primer número">
+            </div>
+            <div class="col">
+                <input type="number" id="numero2" class="form-control" placeholder="Ingrese el segundo número">
+            </div>
+        </div>
+        <br>
+        <div class="row mt-3">
+            <div class="col">
+                <button class="btn btn-primary" onclick="sumar()">Sumar</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" onclick="restar()">Restar</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" onclick="multiplicar()">Multiplicar</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" onclick="dividir()">Dividir</button>
+            </div>
+        </div>
+        <br>
+        <div class="row mt-3">
+            <div class="col">
+                <h3>Resultado: <span id="resultado"></span></h3>
+            </div>
+        </div>
+        <hr>
+        <h1>Calcular Tabla Multiplicar</h1>
+        <br>
+        <div class="row">
+            <div>
+                <select class="form-select form-select-lg mb-3" aria-label="Large select example" id="tablaselect">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                    <option value="6">Six</option>
+                  </select>
+            </div>
+
+            <div class="col">
+                <br>
+                <button class="btn btn-primary" onclick="mostrarTabla()">Mostrar tabla</button>
+            </div>  
+            <br>
+            <table id="tabla" class="table"></table>
+        </div>
+    </div>
+    <script src="operaciones.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>DataTable</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Example 4: </h1>
+        <br>
+        <div class="container">
+            <select class="form-select" aria-label="Default select example" id="select-menu">
+                <option selected>Open this select menu</option>
+                <option value="1">Subir</option>
+                <option value="2">Bajar</option>
+                <option value="3">Resetear</option>
+            </select>
+        </div>
+
+        <div class="container">
+            <table class="table" id="tabla">
+                <tr>
+                    <td onclick="cambiarvalor(this)">0</td>
+                    <td onclick="cambiarvalor(this)">0</td>
+                    <td onclick="cambiarvalor(this)">0</td>
+                </tr>
+                <tr>
+                    <td onclick="cambiarvalor(this)">1</td>
+                    <td onclick="cambiarvalor(this)">1</td>
+                    <td onclick="cambiarvalor(this)">1</td>
+                </tr>
+            </table>
+        </div>
+        <div class="container">
+            <h3>
+                Total: <span id="total"></span>
+                <br>
+                Media: <span id="media"></span>
+            </h3>
+        </div>
+    </div>
+    <script>
+        function cambiarvalor(celda){
+            // Obtener el elemento <select> por su id
+            var selectElement = document.getElementById("select-menu");
+
+            // Obtener la opción seleccionada
+            var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+            
+            if(selectedOption == 1){
+                celda.innerHTML++;
+                CalcularTotal();
+            }
+            if(selectedOption == 2){
+                celda.innerHTML--;
+                CalcularTotal();
+            }
+            if(selectedOption == 3){
+                // Restablecer todas las celdas de la tabla a 0
+                var celdas = document.querySelectorAll("#tabla td");
+                celdas.forEach(function(celda){
+                celda.innerHTML = 0;
+                });
+                CalcularTotal();
+            }
+        }
+
+        function Resetear(){
+            var celdas = document.getElementsByTagName("td");
+            for (let i = 0; i < celdas.length; i++) {
+                celdas[i].innerHTML = 0;
+            }
+        }
+
+        function CalcularTotal(){
+            var total;
+
+            var celdas = document.getElementsByTagName("td");
+            for (let i = 0; i < celdas.length; i++) {
+                var total = total + parseInt(celdas[i].innerHTML);
+            }
+
+            var media = total / celdas.length;
+
+            document.getElementById("total").innerHTML = total;
+            document.getElementById("media").innerHTML = media;
+        }
+    </script>
+</body>
+</html>

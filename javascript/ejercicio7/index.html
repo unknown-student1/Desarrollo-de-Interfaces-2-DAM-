@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Image Management</h2>
+        <hr>
+        <br>
+        <div class="row">
+            <div>
+                <label for="provincia">
+                    <b>Seleccione una imagen:</b>
+                </label>
+            </div>
+            <div class="col">
+                <select class="form-control" id="miSelect" onchange="mostrarImagen()">
+                    <option value="">Seleccione una imagen</option>
+                    <option value="imagen1">Tesla Model Y</option>
+                    <option value="imagen2">Tesla Model X</option>
+                    <option value="imagen3">Tesla Model 3</option>
+                    <option value="imagen4">Sopresa!!!</option>
+                </select>
+            </div>
+            <div class="col">
+                <button class="btn btn-success" id="aumentar" disabled onclick="aumentar()">Aumentar</button>
+                <button class="btn btn-danger" id="reducir" disabled onclick="reducir()">Reducir</button>
+            </div>
+            <div class="container">
+                <img id="imagen" src="" class=" img-fluid rounded float-left">
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    function mostrarImagen() {
+        if (document.getElementById("miselect").value == "") {
+            document.getElementById("aumentar").disabled = false;
+            document.getElementById("reducir").disabled = false;
+        }
+        var select = document.getElementById("miSelect");
+        var imagen = document.getElementById("imagen");
+        var opcionSeleccionada = select.value;
+
+        switch (opcionSeleccionada) {
+            case 1:
+                path = "https://www.tesla.com/ownersmanual/images/GUID-1F2D8746-336F-4CF9-9A04-F35E960F31FE-online-en-US.png";
+                document.getElementById("imagen").setAttribute("src", path);
+                break;
+            case 2:
+                path = "https://www.tesla.com/ownersmanual/images/GUID-F031D297-8C8C-42AD-A80C-247BE435BBAB-online-en-US.png"
+                document.getElementById("imagen").setAttribute("src", path);
+                break;
+            case 3:
+                path = "https://www.tesla.com/sites/default/files/images/support/Meet-Your-Tesla-Model-3.png";
+                document.getElementById("imagen").setAttribute("src", path);
+                break;
+            case 4:
+                path = "https://netrinoimages.s3.eu-west-2.amazonaws.com/2004/10/21/469/415093/mercedesamg_one_2023_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_4277452_o.jpg";
+                document.getElementById("imagen").setAttribute("src", path);
+            default:
+                imagen.src = "";
+                break;
+        }
+
+
+
+    }
+
+    function aumentar() {
+        var imagen = document.getElementById("imagen");
+        imagen.setAttribute('width', imagen.width + 5);
+    }
+
+    function reducir() {
+        var imagen = document.getElementById("imagen");
+        imagen.setAttribute('width', imagen.width - 5);
+    }
+</script>
+
+</html>
